@@ -1,0 +1,43 @@
+.workshop-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.workshop-card {
+  width: calc(33.3333% - 20px); /* 3 cards per row */
+  position: relative;
+  overflow: hidden; /* Ensure the label does not overflow */
+}
+
+.tag-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  writing-mode: vertical-rl;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 4px;
+  text-transform: uppercase;
+}
+
+.workshop-card h3 {
+  margin-bottom: 8px;
+}
+
+.workshop-card p {
+  margin: 4px 0;
+}
+
+.workshop-card button {
+  margin-top: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.workshop-card button:hover {
+  background-color: #ff5e5e;
+  color: #fff;
+}
+
