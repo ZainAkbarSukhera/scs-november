@@ -37,10 +37,12 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import cartReducer from "./reducers/cart";
+import { wishlistReducer } from "./reducers/wishlist";
 
 const store = configureStore({
   reducer:  {
     cart: cartReducer,
+    wishlist:wishlistReducer,
     // Add other reducers here if needed
   },
 });

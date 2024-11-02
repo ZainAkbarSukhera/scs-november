@@ -238,7 +238,7 @@ const Cart = ({ setOpenCart }) => {
   const totalPrice = cart.reduce((acc, item) => acc + (item.qty || 1) * item.price, 0);
 
   return (
-    <div className="fixed top-0 left-0 w-full bg-black bg-opacity-50 h-screen z-10 flex justify-end">
+    <div className="fixed top-0 left-0 w-full bg-gray-500 bg-opacity-50 h-screen z-10 flex justify-end">
       <div className="w-[40%] 800px:w-[25%] bg-white flex flex-col h-full shadow-lg">
         {/* Empty Cart State */}
         {cart.length === 0 ? (
@@ -248,14 +248,14 @@ const Cart = ({ setOpenCart }) => {
               className="cursor-pointer absolute top-5 right-5"
               onClick={() => setOpenCart(false)}
             />
-            <h5 className="text-xl font-medium">Your cart is empty!</h5>
+            <h5 className="text-xl font-montserrat-light text-yankees-blue">Your cart is empty!</h5>
           </div>
         ) : (
           <>
             {/* Cart Header */}
             <div className="flex justify-between items-center p-5 border-b">
               <IoBagHandleOutline size={25} />
-              <h5 className="text-lg font-semibold">{cart.length} items</h5>
+              <h5 className="text-lg font-montserrat-light text-yankees-blue">{cart.length} items</h5>
               <RxCross1
                 size={25}
                 className="cursor-pointer"
@@ -277,7 +277,7 @@ const Cart = ({ setOpenCart }) => {
             {/* Checkout Button */}
             <div className="p-5 border-t">
               <Link to="/checkout">
-                <button className="w-full py-3 bg-red-600 text-white text-lg font-semibold rounded-md hover:bg-red-700">
+                <button className="w-full py-3 bg-madder-lake text-white text-lg font-montserrat-light rounded-md hover:bg-red-600">
                   Checkout Now (SAR {totalPrice.toFixed(2)})
                 </button>
               </Link>
@@ -302,15 +302,15 @@ const CartItem = ({ item, onRemove }) => {
         className="w-16 h-16 mx-4 rounded-md"
       />
       <div className="flex-1">
-        <h1 className="text-sm font-semibold">{item.artName || "Unknown Item"}</h1>
-        <h4 className="text-gray-500 text-sm">
+        <h1 className="text-sm font-montserrat-regular text-yankees-blue">{item.artName || "Unknown Item"}</h1>
+        <h4 className="text-yankees-blue text-regular">
           SAR {item.price} {/* Displaying price */}
         </h4>
-        <h4 className="font-semibold text-lg text-red-500">SAR {totalPrice}</h4>
+        {/* <h4 className="font-montserrat-light text-sm text-madder-lake">SAR {totalPrice}</h4> */}
       </div>
       <RxCross1
         size={20}
-        className="cursor-pointer text-gray-600"
+        className="cursor-pointer text-yankees-blue"
         onClick={onRemove}
       />
     </div>

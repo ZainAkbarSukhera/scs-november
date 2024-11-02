@@ -120,28 +120,40 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addToCart } from "../redux/actions/cart"; 
 import { toast } from "react-toastify";
+import { addToCart } from "../redux/actions/cart";
+import { addToWishlist, removeFromWishlist } from "../redux/actions/wishlist";
 
 const MainArtworkProfile = ({ artworkDetails }) => {
+  const { wishlist } = useSelector((state) => state.wishlist);
   const { cart } = useSelector((state) => state.cart);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [click, setClick] = useState(false);
+
+  const removeFromWishlistHandler = (data) => {
+    setClick(false);
+    dispatch(removeFromWishlist(data));
+    toast.success(`${data.artName} removed from wishlist!`); 
+  };
+
+  const addToWishlistHandler = (data) => {
+    setClick(true);
+    dispatch(addToWishlist(data));
+    toast.success(`${data.artName} added to wishlist!`); 
+  };
 
   const addToCartHandler = async (id) => {
-    // Dispatch addToCart and await the result
     const result = await dispatch(addToCart({ ...artworkDetails, id }));
-
     if (result?.error) {
-        toast.error(result.error); // Show error toast if item already exists
+      toast.error(result.error); // Show error toast if item already exists
     } else {
-        toast.success("Item added to cart successfully!"); // Show success toast
+      toast.success("Item added to cart successfully!"); // Show success toast
     }
-};
-
+  };
 
   return (
     <div className="flex flex-col lg:flex-row gap-4 p-4">
@@ -166,8 +178,17 @@ const MainArtworkProfile = ({ artworkDetails }) => {
           >
             Add to Cart
           </button>
-          <button className="bg-fire-opal text-white py-2 px-6 rounded-lg hover:bg-orange-500 transition duration-300">
-            Add to Wishlist
+          
+          {/* Wishlist Toggle Button */}
+          <button
+            onClick={() =>
+              click ? removeFromWishlistHandler(artworkDetails) : addToWishlistHandler(artworkDetails)
+            }
+            className={`py-2 px-6 rounded-lg transition duration-300 text-white ${
+              click ? "bg-red-500 hover:bg-red-700" : "bg-fire-opal hover:bg-orange-500"
+            }`}
+          >
+            {click ? "Remove from Wishlist" : "Add to Wishlist"}
           </button>
         </div>
       </div>

@@ -20,8 +20,8 @@ import ArtworkProfile from './components/ArtworkProfile/ArtworkProfile';
 import WorkshopProfile from './components/WorkshopProfile/WorkshopProfile';
 import PatronsProfile from './components/Patron&IntermediaryProfile/PIProfile';
 import  IntermediaryProfile from './components/Patron&IntermediaryProfile/PIProfile';
-// // import CheckoutPage from './pages/CheckoutPage';
-// import PaymentPage from './pages/PaymentPage';
+import CheckoutPage from './pages/CheckoutPage';
+import PaymentPage from './pages/PaymentPage';
 
 export default function App() {
   return (
@@ -43,6 +43,8 @@ export default function App() {
         <Route path='/workshop-profile' element={<WorkshopProfile />}/>
         <Route path='/patrons-profile' element={<PatronsProfile />}/>
         <Route path='/intermediary-profile' element={<IntermediaryProfile />}/>
+          <Route path='/payment' element={<PaymentPage />}/>
+          <Route path='/checkout' element={<CheckoutPage />}/>
 
         {/* <Route path='/wishlist' element={<CheckoutPage />}/>
         <Route path='/cart' element={<PaymentPage />}/> */}
