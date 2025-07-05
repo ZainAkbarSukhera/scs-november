@@ -10,6 +10,9 @@ module.exports = {
       height: {
         '88': '22rem', // Adding custom height
       },
+      screens: {
+        'xs': '425px', // Custom breakpoint for iPhone 14 Pro Max
+      },
        colors: {
         'yankees-blue': '#133240',
         'palatinate-purple': '#6F2A53',
